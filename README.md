@@ -1,2 +1,2 @@
-# tempura 0.1.0
+# tempura
 A templating engine for the Go programming language
