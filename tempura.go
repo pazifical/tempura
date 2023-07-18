@@ -1,7 +1,6 @@
 package tempura
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -20,7 +19,6 @@ func NewTemplateEngine(templateDirectory string) TemplateEngine {
 }
 
 func (te *TemplateEngine) Prepare(filePath string) (string, error) {
-	fmt.Println(filePath)
 	b, err := os.ReadFile(filepath.Join(te.templateDirectory, filePath))
 	if err != nil {
 		return "", err
@@ -36,7 +34,7 @@ func (te *TemplateEngine) Prepare(filePath string) (string, error) {
 	if matches == nil {
 		return content, nil
 	}
-	fmt.Println(matches)
+
 	for _, match := range matches {
 		p := replaceAll(match, []string{"{", "}", " "}, "")
 
