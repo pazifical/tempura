@@ -25,7 +25,7 @@ func (te *TemplateEngine) Prepare(filePath string) (string, error) {
 	}
 
 	content := string(b)
-	r, err := regexp.Compile("{{.*}}")
+	r, err := regexp.Compile("{{T.*T}}")
 	if err != nil {
 		return "", err
 	}
@@ -36,7 +36,7 @@ func (te *TemplateEngine) Prepare(filePath string) (string, error) {
 	}
 
 	for _, match := range matches {
-		p := replaceAll(match, []string{"{", "}", " "}, "")
+		p := replaceAll(match, []string{"{{T", "T}}", " "}, "")
 
 		sub, err := te.Prepare(p)
 		if err != nil {
